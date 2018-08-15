@@ -28,4 +28,9 @@ html,
 #app {
   color: #fff;
 }
+// .__wrapper {
+//   position: absolute;
+//   opacity: 0.2;
+//   z-index: -1;
+// }
 </style>

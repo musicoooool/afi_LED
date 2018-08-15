@@ -1,8 +1,8 @@
 <template>
-  <div class="iphone">
+  <div class="iphone margin-bottom-0">
     <img src="../assets/img/iphone.png" alt="iphone">
     <div class="screen">
-      <iframe :src="src" frameborder="0" scrolling="no"></iframe>
+      <iframe name="_phoneFrame" :src="src" frameborder="0" scrolling="no"></iframe>
     </div>
   </div>
 </template>
@@ -11,8 +11,32 @@
 export default {
   name: "PhoneFrame",
   props: {
-    src: String,
-    default: "https://www.cbpc.ltd/public/topic/201809/?_simulate=1"
+    src: {
+      type: String,
+      default: "https://www.cbpc.ltd/public/topic/201809/?_simulate=1"
+    },
+    autoLoad: {
+      type: int,
+      default: 0
+    }
+  },
+  data() {
+    return {
+      itv: ""
+    };
+  },
+  mounted() {
+    if (this.autoLoad > 0) {
+      this.itv = setInterval(() => {
+        // document.all._phoneFrame.contentWindow.location.reload(true);
+        document.all._phoneFrame.src = this.src;
+      }, autoLoad * 1000);
+    }
+  },
+  beforeDestroy() {
+    if (this.autoLoad > 0) {
+      clearInterval(this.itv);
+    }
   }
 };
 </script>
@@ -21,17 +45,17 @@ export default {
 <style scoped lang="less">
 /* iphone背景框 */
 .iphone {
-  margin-top: 10px;
+  margin: 10px;
   position: relative;
 
   img {
-    width: 400px;
+    width: 349px;
   }
 
   .screen {
     position: absolute;
-    left: 47px;
-    top: 123px;
+    left: 22px;
+    top: 117px;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
     overflow: hidden;
