@@ -16,7 +16,7 @@ export default {
       default: "https://www.cbpc.ltd/public/topic/201809/?_simulate=1"
     },
     autoLoad: {
-      type: int,
+      type: Number,
       default: 0
     }
   },
