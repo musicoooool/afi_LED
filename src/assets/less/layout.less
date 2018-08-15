@@ -1,0 +1,40 @@
+/* 横向布局 */
+
+.row {
+  display: flex;
+}
+
+@maxWidth: 24;
+.loopCol( @count )when( @count > 0) {
+  .col-@{count} {
+    flex: @count;
+  }
+  .loopCol((@count - 1));
+}
+
+.loopColOffset( @count )when( @count > 0) {
+  .col-offset-@{count} {
+    margin-left: (@count * 100% / @maxWidth);
+  }
+  .loopColOffset((@count - 1));
+}
+
+.loopMargin( @count ) when ( @count>=0) {
+  .margin-left-@{count} {
+    margin-left: (@count) px;
+  }
+  .margin-right-@{count} {
+    margin-right: (@count) px;
+  }
+  .margin-top-@{count} {
+    margin-top: (@count) px;
+  }
+  .margin-bottom-@{count} {
+    margin-bottom: (@count) px;
+  }
+  .loopMargin((@count - 5));
+}
+
+.loopCol(@maxWidth);
+.loopColOffset(@maxWidth);
+.loopMargin(100);
