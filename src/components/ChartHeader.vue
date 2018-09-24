@@ -1,6 +1,6 @@
 <template>
   <div class="col-1">
-    <div class="title">管三党支部道德讲堂</div>
+    <div class="title">印钞管理党支部道德讲堂</div>
     <div class="subtitle">{{now}}</div>
   </div>
 </template>
