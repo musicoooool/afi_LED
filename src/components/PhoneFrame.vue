@@ -16,7 +16,7 @@ export default {
       default: "https://www.cbpc.ltd/public/topic/201809/?_simulate=1"
     },
     autoLoad: {
-      type: Number,
+      type: String,
       default: 0
     }
   },
@@ -30,7 +30,7 @@ export default {
       this.itv = setInterval(() => {
         // document.all._phoneFrame.contentWindow.location.reload(true);
         document.all._phoneFrame.src = this.src;
-      }, autoLoad * 1000);
+      }, this.autoLoad * 1000);
     }
   },
   beforeDestroy() {

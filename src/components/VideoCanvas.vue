@@ -8,6 +8,8 @@
 .video-container {
   position: absolute;
   z-index: -2;
+  width: 100%;
+  height: 100%;
   &::before {
     content: "";
     position: absolute;
