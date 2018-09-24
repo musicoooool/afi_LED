@@ -17,5 +17,8 @@
     height: 100%;
     background: rgba(12, 32, 90, 0.59);
   }
+  video {
+    width: 100%;
+  }
 }
 </style>

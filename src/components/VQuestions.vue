@@ -1,17 +1,16 @@
 <template>
   <div class="center">
-    <div class="actions">
-      <button @click="showAnswer">查看答案</button>
-      <button @click="refreshQuestion">{{qToggle?'暂停':'下一题'}}</button>
-    </div>
     <h2>{{curQuestion.title}}</h2>
     <ul>
       <li v-for="(item,i) in curQuestion.option" :key="i+'_'+idx">{{['A','B','C','D','E','F','G'][i]}}、{{item}}</li>
     </ul>
-
     <transition name="fade">
       <p v-show="showResult">正确答案: {{curAnswer}}</p>
     </transition>
+    <div class="actions">
+      <button @click="showAnswer">查看答案</button>
+      <button @click="refreshQuestion">{{qToggle?'暂停':'下一题'}}</button>
+    </div>
   </div>
 </template>
 <script>
@@ -72,18 +71,18 @@ export default {
   align-items: center;
   max-height: 800px;
   height: 400px;
-  padding: 40px 150px;
-  margin-top: 100px;
+  padding: 40px 80px;
   h2 {
-    font-size: 30pt;
+    font-size: 45pt;
     font-weight: normal;
-    margin-bottom: 0;
+    margin: 0;
   }
   ul {
     font-size: 35pt;
     list-style: none;
+    margin: 0.5em 0;
     li {
-      height: 80px;
+      padding: 10px 0;
     }
   }
   p {
@@ -120,6 +119,10 @@ export default {
       background-color: #409eff;
       border-color: #409eff;
     }
+  }
+  .actions {
+    position: absolute;
+    bottom: 30px;
   }
 }
 .fade-enter-active,
