@@ -11,6 +11,7 @@
       <button @click="showAnswer">查看答案</button>
       <button @click="refreshQuestion">{{qToggle?'暂停':'下一题'}}</button>
     </div>
+    <audio src="/audio/bgm.mp3" ref="audio"></audio>
   </div>
 </template>
 <script>
@@ -22,7 +23,8 @@ export default {
       intervalId: "",
       idx: Math.floor(Math.random() * questions.length),
       showResult: false,
-      qToggle: false
+      qToggle: false,
+      audio: ""
     };
   },
   computed: {
@@ -50,16 +52,23 @@ export default {
       this.qToggle = !this.qToggle;
       if (!this.qToggle) {
         clearInterval(this.intervalId);
+        this.audio.pause();
+        this.audio.currentTime = 0;
         return;
       }
       this.showResult = false;
       this.intervalId = setInterval(() => {
         this.prepareQuestion();
       }, 50);
+      this.playMusic();
+    },
+    playMusic() {
+      this.audio.play();
     }
   },
   mounted() {
     this.prepareQuestion();
+    this.audio = this.$refs.audio;
   }
 };
 </script>
