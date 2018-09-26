@@ -4,6 +4,7 @@
     <ul>
       <li v-for="(item,i) in curQuestion.option" :key="i+'_'+idx">{{['A','B','C','D','E','F','G'][i]}}、{{item}}</li>
     </ul>
+    <div class="prize_code">【{{nums}}】</div>
     <transition name="fade">
       <p v-show="showResult">正确答案: {{curAnswer}}</p>
     </transition>
@@ -24,7 +25,8 @@ export default {
       idx: Math.floor(Math.random() * questions.length),
       showResult: false,
       qToggle: false,
-      audio: ""
+      audio: "",
+      nums: ""
     };
   },
   computed: {
@@ -44,6 +46,7 @@ export default {
   methods: {
     prepareQuestion() {
       this.idx = Math.floor(Math.random() * questions.length);
+      this.nums = Math.ceil(Math.random() * 90);
     },
     showAnswer() {
       this.showResult = true;
@@ -141,5 +144,8 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+.prize_code {
+  font-size: 50pt;
 }
 </style>
